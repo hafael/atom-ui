@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Login from '../views/Login.vue';
+import Dashboard from '../views/Dashboard.vue';
 
 const routes = [
   {
@@ -10,8 +11,7 @@ const routes = [
   {
     path: '/dashboard',
     name: 'Dashboard',
-    // component: () => import('../views/Dashboard.vue'), // Lazy load dashboard
-    component: { template: '<div>Dashboard</div>' }, // Placeholder for now
+    component: Dashboard,
   },
 ];
 
