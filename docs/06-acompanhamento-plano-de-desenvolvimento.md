@@ -39,11 +39,11 @@ As metas macro representam os grandes objetivos do projeto.
 | Micro Meta (Tarefa) | Status | Responsável | Observações |
 | :--- | :--- | :--- | :--- |
 | Configurar ambiente de desenvolvimento (Node.js, Linter, etc.) | `Feita` | - | - |
-| Criar repositório no GitHub | `A Fazer` | - | - |
-| Definir estrutura de pastas do projeto | `A Fazer` | - | - |
-| Criar componente `Button` | `A Fazer` | - | - |
-| Criar componente `Input` | `A Fazer` | - | - |
-| Criar componente `Header` | `A Fazer` | - | - |
+| Criar repositório no GitHub | `Feita` | - | Repositório criado em git@github.com:hafael/atom-ui.git |
+| Definir estrutura de pastas do projeto | `Feita` | - | - |
+| Criar componente `Button` | `Feita` | - | - |
+| Criar componente `Input` | `Feita` | - | - |
+| Criar componente `Header` | `Feita` | - | - |
 
 ### Sprint 2: Mais Componentes e Início da Integração
 
