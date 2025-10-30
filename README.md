@@ -46,31 +46,24 @@ Este aplicativo atua como uma camada de tradução, apresentando a hierarquia de
 └── README.md
 ```
 
-## Como Iniciar (Exemplo)
+## Como Iniciar
 
-1.  **Clone o repositório:**
-    ```bash
-    git clone [URL_DO_REPOSITORIO]
-    cd atom-ui
-    ```
-
-2.  **Instale as dependências:**
+1.  **Instale as dependências:**
     ```bash
     npm install
     ```
 
-3.  **Configure as variáveis de ambiente:**
-    Crie um arquivo `.env` na raiz do projeto e adicione a URL da sua API do AtoM:
-    ```
-    VUE_APP_ATOM_API_URL=https://seu-atom.com/api
-    ```
-
-4.  **Execute o servidor de desenvolvimento:**
+2.  **Execute o servidor de desenvolvimento:**
     ```bash
     npm run dev
     ```
 
-5.  **Compile para produção:**
-    ```bash
-    npm run build
-    ```
+3.  **Acesse o aplicativo:**
+    Abra o seu navegador e acesse a URL fornecida pelo Vite (geralmente `http://localhost:5173`).
+
+**Nota sobre a autenticação:**
+
+A autenticação está atualmente simulada (`mocked`). Para fazer login, utilize as seguintes credenciais:
+
+*   **Usuário:** `demo@example.com`
+*   **Senha:** `demo`
