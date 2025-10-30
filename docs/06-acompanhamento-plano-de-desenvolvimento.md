@@ -53,7 +53,7 @@ As metas macro representam os grandes objetivos do projeto.
 
 | Micro Meta (Tarefa) | Status | Responsável | Observações |
 | :--- | :--- | :--- | :--- |
-| Criar componente `Card` | `A Fazer` | - | - |
+| Criar componente `Card` | `Feita` | - | - |
 | Criar componente `Modal` | `A Fazer` | - | - |
 | Criar componente `Table` | `A Fazer` | - | - |
 | Estruturar serviço de API (client HTTP) | `A Fazer` | - | - |
