@@ -1,0 +1,24 @@
+{
+  "name": "atom-ui",
+  "version": "1.0.0",
+  "description": "Este projeto é uma interface de usuário moderna e amigável, construída com Vue.js e Tailwind CSS, para interagir com uma instância da plataforma [AtoM (Access to Memory)](https://www.accesstomemory.org/).",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . --ext .vue,.js,.ts",
+    "format": "prettier --write ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vue/eslint-config-prettier": "^10.2.0",
+    "@vue/eslint-config-typescript": "^14.6.0",
+    "eslint": "^9.38.0",
+    "eslint-plugin-vue": "^10.5.1",
+    "prettier": "^3.6.2"
+  }
+}
