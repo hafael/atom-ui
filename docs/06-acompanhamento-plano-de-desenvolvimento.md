@@ -55,7 +55,7 @@ As metas macro representam os grandes objetivos do projeto.
 | :--- | :--- | :--- | :--- |
 | Criar componente `Card` | `Feita` | - | - |
 | Criar componente `Modal` | `Feita` | - | - |
-| Criar componente `Table` | `A Fazer` | - | - |
+| Criar componente `Table` | `Feita` | - | - |
 | Estruturar serviço de API (client HTTP) | `A Fazer` | - | - |
 | Implementar endpoint de autenticação | `A Fazer` | - | Depende da API |
 
