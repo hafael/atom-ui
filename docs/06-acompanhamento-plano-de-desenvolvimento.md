@@ -56,7 +56,7 @@ As metas macro representam os grandes objetivos do projeto.
 | Criar componente `Card` | `Feita` | - | - |
 | Criar componente `Modal` | `Feita` | - | - |
 | Criar componente `Table` | `Feita` | - | - |
-| Estruturar serviço de API (client HTTP) | `A Fazer` | - | - |
+| Estruturar serviço de API (client HTTP) | `Feita` | - | - |
 | Implementar endpoint de autenticação | `A Fazer` | - | Depende da API |
 
 ### Sprint 3: Funcionalidade de Login e Dashboard
