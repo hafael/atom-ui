@@ -8,7 +8,18 @@ const apiClient = axios.create({
 });
 
 export default {
-  // Example function
+  // Mocked login
+  login(credentials) {
+    if (credentials.username === 'demo@example.com' && credentials.password === 'demo') {
+      return Promise.resolve({ data: { apiKey: 'mock-api-key' } });
+    }
+    return Promise.reject('Invalid credentials');
+  },
+
+  setApiKey(apiKey) {
+    apiClient.defaults.headers.common['X-API-KEY'] = apiKey;
+  },
+
   getInformationObjects() {
     return apiClient.get('/informationobjects');
   },
