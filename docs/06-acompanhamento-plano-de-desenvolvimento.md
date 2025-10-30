@@ -67,8 +67,8 @@ As metas macro representam os grandes objetivos do projeto.
 
 | Micro Meta (Tarefa) | Status | Responsável | Observações |
 | :--- | :--- | :--- | :--- |
-| Desenvolver a tela de Login | `A Fazer` | - | - |
-| Integrar tela de Login com o serviço de autenticação | `A Fazer` | - | - |
+| Desenvolver a tela de Login | `Feita` | - | - |
+| Integrar tela de Login com o serviço de autenticação | `Feita` | - | - |
 | Desenvolver a estrutura da tela de Dashboard | `A Fazer` | - | - |
 | Proteger rotas que exigem autenticação | `A Fazer` | - | - |
 
