@@ -72,3 +72,14 @@ As metas macro representam os grandes objetivos do projeto.
 | Desenvolver a estrutura da tela de Dashboard | `Feita` | - | - |
 | Proteger rotas que exigem autenticação | `Feita` | - | - |
 
+### Sprint 4: Refatoração e Detalhamento da Visualização
+
+**Período:** 23/11/2025 - 30/11/2025
+
+**Objetivo:** Melhorar a usabilidade do formulário de descrição e enriquecer a visualização de itens.
+
+| Micro Meta (Tarefa) | Status | Responsável | Observações |
+| :--- | :--- | :--- | :--- |
+| Refatorar o `DescriptionForm.vue` para ser mais amigável | `Feita` | - | Reagrupamento de campos, simplificação de labels e textos de ajuda. |
+| Adicionar mais campos de descrição na `Browse.vue` | `Feita` | - | Criação do componente `DescriptionList` para exibir os novos campos. |
+

@@ -19,7 +19,7 @@
 import Header from '@/components/Header.vue';
 import Input from '@/components/Input.vue';
 import Button from '@/components/Button.vue';
-import api from '@/services/api';
+import atomDataService from '@/services/atomDataService';
 
 export default {
   name: 'Login',
@@ -37,13 +37,10 @@ export default {
   methods: {
     async handleLogin() {
       try {
-        const response = await api.login({
+        await atomDataService.login({
           username: this.username,
           password: this.password,
         });
-        const { apiKey } = response.data;
-        api.setApiKey(apiKey);
-        // Redirect to dashboard or other protected route
         this.$router.push('/dashboard');
       } catch (error) {
         console.error('Login failed:', error);

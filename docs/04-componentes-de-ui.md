@@ -1,8 +1,8 @@
 # Componentes de UI Reutilizáveis
 
-Para garantir consistência visual, agilidade no desenvolvimento e manutenibilidade, a aplicação será construída de forma modular, utilizando componentes Vue.js. A biblioteca [Tailwind CSS](https://tailwindcss.com/) permitirá a estilização direta nas classes dos componentes, e o [Headless UI](https://headlessui.dev/) (ou similar) fornecerá a base de lógica e acessibilidade para componentes complexos.
+Para garantir consistência visual, agilidade no desenvolvimento e manutenibilidade, a aplicação é construída de forma modular, utilizando componentes Vue.js. A biblioteca [Tailwind CSS](https://tailwindcss.com/) permite a estilização direta nas classes dos componentes, e o [Headless UI](https://headlessui.dev/) (ou similar) fornece a base de lógica e acessibilidade para componentes complexos.
 
-Abaixo está uma lista dos principais componentes a serem desenvolvidos.
+Abaixo está uma lista dos principais componentes desenvolvidos e utilizados.
 
 ## Componentes de Layout
 
@@ -17,16 +17,16 @@ Abaixo está uma lista dos principais componentes a serem desenvolvidos.
 
 Estes são os componentes de nível superior que representam as "páginas" da aplicação, gerenciados pelo Vue Router.
 
-*   **`LoginView.vue`**
+*   **`Login.vue`**
     *   **Descrição:** Contém o `AuthLayout` e o componente `LoginForm`.
 
-*   **`DashboardView.vue`**
+*   **`Dashboard.vue`**
     *   **Descrição:** A página principal após o login. Exibe uma grade de `AlbumCard`, representando as coleções do usuário.
 
-*   **`AlbumView.vue`**
-    *   **Descrição:** Exibe o conteúdo de um álbum específico. Contém um `MediaGrid` com as fotos e vídeos.
+*   **`Browse.vue`**
+    *   **Descrição:** Exibe o conteúdo de um álbum específico ou os detalhes de uma mídia individual. Contém um `MediaGrid` com as fotos e vídeos ou o `DigitalObjectViewer` e o `DescriptionList` para itens individuais.
 
-*   **`MediaView.vue`**
+*   **`Describe.vue`**
     *   **Descrição:** A página de visualização e edição de uma única mídia. Exibe a mídia em destaque e o `DescriptionForm`.
 
 ## Componentes Funcionais
@@ -36,8 +36,8 @@ Estes são os componentes de nível superior que representam as "páginas" da ap
     *   **Descrição:** Formulário com campos para "usuário", "senha" e um botão "Entrar". Responsável por emitir um evento com as credenciais para a view pai, que chamará o serviço de autenticação. Inclui tratamento de erros (ex: "Usuário ou senha inválidos").
 
 *   **`AlbumCard.vue`**
-    *   **Props:** `title` (string), `thumbnailUrl` (string), `itemCount` (number)
-    *   **Descrição:** Um card clicável que representa um álbum na dashboard. Exibe uma imagem, o título e a quantidade de itens.
+    *   **Props:** `title` (string), `levelOfDescription` (string), `childrenCount` (number), `identifier` (string), `thumbnailUrls` (array)
+    *   **Descrição:** Um card clicável que representa um álbum ou uma coleção na dashboard/browse. Exibe miniaturas, o título, o nível de descrição e a quantidade de itens.
 
 *   **`MediaGrid.vue`**
     *   **Props:** `mediaItems` (array)
@@ -51,33 +51,67 @@ Estes são os componentes de nível superior que representam as "páginas" da ap
     *   **Props:** `media` (object)
     *   **Descrição:** Componente que exibe a imagem ou o vídeo em tamanho grande. Se for vídeo, utiliza a tag `<video>`.
 
+*   **`DigitalObjectViewer.vue`**
+    *   **Props:** `title` (string), `identifier` (string), `levelOfDescription` (string), `digitalObject` (object), `publicationStatus` (string), `referenceCode` (string), `slug` (string)
+    *   **Descrição:** Exibe um objeto digital (imagem, vídeo) em destaque, juntamente com informações básicas e botões de ação (descrever, baixar).
+
 *   **`DescriptionForm.vue`**
     *   **Props:** `initialData` (object)
-    *   **Descrição:** O formulário principal para descrever uma mídia. Contém os campos simplificados (título, pessoas, local, data, história). Emite um evento com os dados atualizados. Utiliza componentes de base como `TextInput` e `DatePicker`.
+    *   **Descrição:** O formulário principal para descrever uma mídia. Contém campos agrupados de forma mais intuitiva para usuários não-arquivistas (Identificação, Conteúdo, Acesso e Uso, Publicação). Emite um evento com os dados atualizados.
+
+*   **`DescriptionList.vue`**
+    *   **Props:** `parentTitle` (string), `referenceCode` (string), `publicationStatus` (string), `levelOfDescription` (string), `extentAndMedium` (string), `dates` (array), `repository` (string), `scopeAndContent` (string), `conditionsGoverningAccess` (string), `existenceAndLocationOfOriginals` (string), `notes` (array)
+    *   **Descrição:** Exibe uma lista detalhada das propriedades de descrição de um item, formatada para fácil leitura.
 
 ## Componentes de Base (UI Kit)
 
 Estes são os blocos de construção fundamentais.
 
 *   **`Button.vue`**
-    *   **Props:** `variant` ('primary', 'secondary'), `disabled` (boolean)
-    *   **Descrição:** Botão genérico com estilos pré-definidos.
+    *   **Props:** `type` (string), `disabled` (boolean)
+    *   **Descrição:** Botão genérico com estilos pré-definidos para ações primárias.
 
-*   **`TextInput.vue`**
-    *   **Props:** `label`, `modelValue`, `placeholder`, `error` (string)
-    *   **Descrição:** Um campo de input de texto com label e espaço para mensagem de erro.
+*   **`SecondaryButton.vue`**
+    *   **Props:** `type` (string), `disabled` (boolean), `href` (string), `download` (string)
+    *   **Descrição:** Botão para ações secundárias, com estilo diferente do `Button` primário. Pode atuar como link para download.
 
-*   **`TextareaInput.vue`**
-    *   **Props:** `label`, `modelValue`, `rows` (number)
-    *   **Descrição:** Similar ao `TextInput`, mas para textos mais longos.
+*   **`Input.vue`**
+    *   **Props:** `id`, `name`, `modelValue`, `type`, `placeholder`, `required`
+    *   **Descrição:** Um campo de input de texto genérico com label e suporte a diferentes tipos.
+
+*   **`Textarea.vue`**
+    *   **Props:** `id`, `name`, `modelValue`, `rows`, `placeholder`, `required`
+    *   **Descrição:** Um campo de input para textos mais longos.
+
+*   **`Select.vue`**
+    *   **Props:** `id`, `name`, `modelValue`, `options` (array de {value, text})
+    *   **Descrição:** Um componente de seleção (dropdown) com opções configuráveis.
 
 *   **`DatePicker.vue`**
-    *   **Props:** `label`, `modelValue`
+    *   **Props:** `id`, `name`, `modelValue`
     *   **Descrição:** Um seletor de data amigável que permite a seleção de ano, mês/ano ou data completa.
+
+*   **`Label.vue`**
+    *   **Props:** `for` (string)
+    *   **Descrição:** Componente de label para campos de formulário, associado a um input pelo `for`.
+
+*   **`Breadcrumb.vue`**
+    *   **Props:** `items` (array de {text, to})
+    *   **Descrição:** Componente de navegação que mostra a hierarquia da página atual.
+
+*   **`Card.vue`**
+    *   **Descrição:** Um contêiner genérico com bordas e sombra para agrupar conteúdo.
+
+*   **`Modal.vue`**
+    *   **Props:** `show` (boolean)
+    *   **Descrição:** Um componente de diálogo modal que pode ser exibido ou ocultado.
+
+*   **`Table.vue`**
+    *   **Descrição:** Um componente para exibir dados em formato de tabela.
 
 *   **`Spinner.vue`**
     *   **Descrição:** Animação de carregamento para indicar que uma operação está em andamento.
 
 *   **`Tooltip.vue`**
     *   **Props:** `text` (string)
-    *   **Descrição:** Exibe uma caixa de ajuda quando o usuário passa o mouse sobre um ícone de interrogação.
+    *   **Descrição:** Exibe uma caixa de ajuda quando o usuário passa o mouse sobre um elemento.

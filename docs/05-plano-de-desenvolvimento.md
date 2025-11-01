@@ -7,106 +7,88 @@ Este documento descreve um plano de desenvolvimento iterativo, dividido em fases
 ### Fase 1: Fundação e Autenticação (Sprint 1)
 
 **Objetivo:** Criar a estrutura básica do projeto e permitir que um usuário faça login.
+**Status:** `Concluída`
 
 *   **Tarefas:**
-    1.  **Setup do Projeto:**
-        *   Inicializar o projeto Vue.js com Vite ou Vue CLI.
-        *   Instalar e configurar Tailwind CSS, Vue Router e Axios.
-        *   Definir a estrutura de pastas (`components`, `views`, `services`, etc.).
-    2.  **Variáveis de Ambiente:**
-        *   Configurar o uso de um arquivo `.env` para a URL da API do AtoM.
-    3.  **Layouts e Roteamento:**
-        *   Criar os componentes `AppLayout` e `AuthLayout`.
-        *   Configurar as rotas iniciais: `/login` e `/` (dashboard).
-    4.  **Tela de Login:**
-        *   Desenvolver a `LoginView` e o componente `LoginForm`.
-    5.  **Serviço de Autenticação:**
-        *   Criar um `AuthService.js` que se comunique com a API do AtoM para validar credenciais.
-        *   Implementar o armazenamento e a remoção do token de API no `localStorage`.
-    6.  **Guardas de Rota:**
-        *   Implementar um guarda no Vue Router que redirecione usuários não autenticados para a página de login.
+    1.  **Setup do Projeto:** `Feita`
+    2.  **Variáveis de Ambiente:** `Feita`
+    3.  **Layouts e Roteamento:** `Feita`
+    4.  **Tela de Login:** `Feita`
+    5.  **Serviço de Autenticação:** `Feita`
+    6.  **Guardas de Rota:** `Feita`
 
-**Entregável:** Um usuário consegue inserir credenciais, ser autenticado contra a API do AtoM e ser redirecionado para uma página de dashboard (ainda vazia).
+**Entregável:** Um usuário consegue inserir credenciais, ser autenticado contra a API do AtoM e ser redirecionado para uma página de dashboard.
 
 ---
 
-### Fase 2: Visualização de Dados (Read-Only) (Sprint 2)
+### Fase 2: Visualização de Dados (Read-Only)
 
-**Objetivo:** Exibir os álbuns e as mídias do usuário de forma somente leitura.
+**Objetivo:** Exibir os álbuns e as mídias do usuário.
+**Status:** `Concluída`
 
 *   **Tarefas:**
-    1.  **Serviço de Dados:**
-        *   Criar um `AtomDataService.js` para buscar dados da API.
-        *   Implementar a função para buscar as coleções ("álbuns") do usuário.
-        *   Implementar a função para buscar os itens ("memórias") de uma coleção.
-    2.  **Dashboard de Álbuns:**
-        *   Desenvolver o componente `AlbumCard`.
-        *   Na `DashboardView`, chamar o serviço para buscar e exibir os álbuns do usuário em uma grade.
-    3.  **Galeria de Mídias:**
-        *   Desenvolver a `AlbumView` e os componentes `MediaGrid` e `MediaThumbnail`.
-        *   Ao clicar em um `AlbumCard`, navegar para a `AlbumView` correspondente, passando o ID do álbum como parâmetro de rota.
-        *   Na `AlbumView`, buscar e exibir as mídias do álbum.
+    *   Implementar o `AtomDataService.js` para buscar as coleções ("álbuns") e os itens ("memórias"). `Feita`
+    *   Desenvolver a `DashboardView` para exibir os álbuns. `Feita`
+    *   Desenvolver a `Browse.vue` para exibir as mídias de um álbum. `Feita`
+    *   `[NOVO]` **Melhoria de UX:** Adicionar "skeleton loaders" (efeitos de shimmer) enquanto os dados são carregados, melhorando a percepção de performance. `A Fazer`
 
 **Entregável:** O usuário pode fazer login, ver seus álbuns, clicar em um deles e ver a galeria de fotos e vídeos. Nenhuma edição é possível ainda.
 
 ---
 
-### Fase 3: Descrição e Edição de Mídias (Sprint 3)
+### Fase 3: Descrição e Edição de Mídias
 
 **Objetivo:** Permitir que o usuário descreva uma mídia.
+**Status:** `Em andamento`
 
 *   **Tarefas:**
-    1.  **Componente de Visualização:**
-        *   Desenvolver a `MediaView` e o `MediaViewer` para exibir uma única mídia em destaque.
-        *   Configurar a rota para `/album/{albumId}/media/{mediaId}`.
-    2.  **Formulário de Descrição:**
-        *   Desenvolver o componente `DescriptionForm` com todos os campos simplificados.
-        *   Criar os componentes de base necessários: `TextInput`, `TextareaInput`, `DatePicker`.
-    3.  **Integração do Formulário:**
-        *   Na `MediaView`, ao carregar os dados da mídia, passar os metadados existentes para o `DescriptionForm`.
-    4.  **Serviço de Atualização:**
-        *   No `AtomDataService.js`, implementar a função para enviar uma requisição `PUT` para a API, atualizando os metadados de um item.
-        *   Implementar a lógica de "tradução/mapeamento" dos campos do formulário para os campos da API.
-    5.  **Salvar Dados:**
-        *   Ao submeter o `DescriptionForm`, chamar o serviço de atualização e exibir uma notificação de sucesso ou erro.
+    *   Desenvolver a `Browse.vue` para exibir uma mídia e o `DescriptionForm`. `Feita`
+    *   Implementar a lógica de "tradução/mapeamento" dos campos do formulário para a API no `AtomDataService.js`. `Feita`
+    *   `[NOVO]` **Prevenção de Perda de Dados:** Implementar salvamento automático (`auto-save`) no formulário de descrição. `A Fazer`
+    *   `[NOVO]` **Feedback Visual:** Adicionar o indicador visual nas miniaturas para mostrar quais mídias já foram descritas. `A Fazer`
 
 **Entregável:** O usuário pode navegar até uma mídia, preencher o formulário de descrição e salvar as informações no AtoM.
 
 ---
 
-### Fase 4: Refinamento e UX (Sprint 4)
+### Fase 4: Refinamento e UX
 
 **Objetivo:** Polir a aplicação, melhorar a experiência do usuário e tratar casos de borda.
+**Status:** `Em andamento`
 
 *   **Tarefas:**
-    1.  **Indicadores de Carregamento:**
-        *   Adicionar o componente `Spinner` em todas as telas que fazem requisições à API.
-    2.  **Tratamento de Erros:**
-        *   Garantir que erros de API (ex: 404, 500) sejam tratados e que mensagens amigáveis sejam exibidas ao usuário.
-    3.  **Textos de Ajuda:**
-        *   Implementar o componente `Tooltip` e adicioná-lo aos campos do formulário que possam gerar dúvidas.
-    4.  **Responsividade:**
-        *   Testar e ajustar todos os componentes e layouts para garantir uma boa experiência em tablets e desktops.
-    5.  **Indicadores de Status:**
-        *   Implementar o indicador visual nas miniaturas para mostrar quais mídias já foram descritas.
+    *   Implementar tratamento de erros global para exibir mensagens amigáveis em caso de falha na API. `A Fazer`
+    *   Adicionar componentes de `Tooltip` com textos de ajuda nos campos do formulário. `Feita` (parcialmente, com a refatoração do DescriptionForm)
+    *   Garantir a responsividade completa da aplicação. `A Fazer`
+    *   `[NOVO]` **Funcionalidade Essencial:** Implementar a funcionalidade de "Logout", limpando o token de acesso do usuário. `A Fazer`
 
 **Entregável:** Uma aplicação funcional, robusta e com uma experiência de usuário aprimorada.
 
 ---
 
-### Fase 5: Testes e Implantação (Sprint 5)
+### Fase 5: Testes e Qualidade
 
-**Objetivo:** Garantir a qualidade e disponibilizar a aplicação para os usuários.
+**Objetivo:** Garantir a robustez e a qualidade da aplicação.
+**Status:** `A Fazer`
 
 *   **Tarefas:**
-    1.  **Testes Manuais:**
-        *   Realizar um ciclo completo de testes da jornada do usuário.
-    2.  **Build de Produção:**
-        *   Executar o comando `npm run build` para gerar os arquivos estáticos da aplicação.
-    3.  **Implantação (Deploy):**
-        *   Configurar a hospedagem (Netlify, Vercel, etc.) e implantar a aplicação.
-        *   Configurar o domínio e o certificado SSL.
-    4.  **Documentação Final:**
-        *   Revisar e atualizar o `README.md` com as instruções finais de acesso e uso.
+    *   `[NOVO]` **Testes Unitários:** Escrever testes para as lógicas de negócio nos serviços (`AuthService`, `AtomDataService`) e componentes complexos. `A Fazer`
+    *   `[NOVO]` **Testes de Jornada (E2E):** Escrever testes automatizados para as jornadas críticas do usuário (login, visualização de álbuns, descrição de uma mídia). `A Fazer`
+    *   Realizar um ciclo completo de testes manuais. `A Fazer`
 
-**Entregável:** A aplicação online e pronta para ser utilizada pelos clientes.
+**Entregável:** Código com cobertura de testes e um relatório de testes manuais.
+
+---
+
+### Fase 6: Implantação e Entrega (Deploy)
+
+**Objetivo:** Disponibilizar a aplicação para os usuários.
+**Status:** `A Fazer`
+
+*   **Tarefas:**
+    *   `[NOVO]` **Automação (CI/CD):** Configurar um pipeline de Integração e Entrega Contínua (usando GitHub Actions, por exemplo) para automatizar a verificação de testes e a geração da build a cada alteração no código. `A Fazer`
+    *   Gerar a `build` de produção da aplicação. `A Fazer`
+    *   Configurar a hospedagem e realizar o deploy em um ambiente de produção. `A Fazer`
+    *   Revisar e atualizar o `README.md` com as instruções finais de acesso e uso. `A Fazer`
+
+**Entregável:** A aplicação online e pronta para ser utilizada pelos clientes, com um processo de deploy automatizado.

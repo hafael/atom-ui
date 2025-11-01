@@ -10,6 +10,19 @@ A plataforma AtoM é uma ferramenta poderosa para arquivistas, mas sua interface
 
 Este aplicativo atua como uma camada de tradução, apresentando a hierarquia de `Fundo > Coleção > Item` como `Álbuns > Memórias` e transformando campos como `Scope and content` ou `Creator` em perguntas simples como "Quem está na foto?" ou "Conte a história desta memória".
 
+## Documentação
+
+A documentação do projeto está dividida nos seguintes arquivos:
+
+| Arquivo | Descrição |
+| :--- | :--- |
+| [01-arquitetura.md](./docs/01-arquitetura.md) | Descreve a arquitetura geral do sistema, os componentes envolvidos e como eles interagem. |
+| [02-jornada-e-funcionalidades.md](./docs/02-jornada-e-funcionalidades.md) | Detalha a experiência do usuário final e as funcionalidades que a aplicação deve oferecer. |
+| [03-integracao-api-atom.md](./docs/03-integracao-api-atom.md) | Descreve como a aplicação Vue.js irá interagir com a API REST do AtoM e como os campos do formulário são mapeados. |
+| [04-componentes-de-ui.md](./docs/04-componentes-de-ui.md) | Lista e descreve os principais componentes de UI reutilizáveis desenvolvidos para a aplicação. |
+| [05-plano-de-desenvolvimento.md](./docs/05-plano-de-desenvolvimento.md) | Descreve um plano de desenvolvimento iterativo, dividido em fases, para a construção da aplicação. |
+| [06-acompanhamento-plano-de-desenvolvimento.md](./docs/06-acompanhamento-plano-de-desenvolvimento.md) | Registra e acompanha o cumprimento do plano de desenvolvimento do projeto. |
+
 ## Tecnologias Propostas
 
 *   **Frontend Framework:** [Vue.js 3](https://vuejs.org/) (Composition API)
@@ -21,30 +34,10 @@ Este aplicativo atua como uma camada de tradução, apresentando a hierarquia de
 ## Funcionalidades Principais
 
 *   Autenticação de usuário segura, vinculada a um fundo/coleção específico no AtoM.
-*   Visualização de acervos em formato de "álbuns" e "galerias".
-*   Interface guiada para descrição de mídias (fotos e vídeos) com campos simplificados.
+*   Visualização de acervos em formato de "álbuns" e "galerias", com navegação hierárquica.
+*   Interface guiada para descrição de mídias (fotos e vídeos) com campos simplificados e intuitivos.
 *   Tradução automática dos dados inseridos para os metadados correspondentes na API do AtoM.
 *   Design responsivo e focado na experiência do usuário.
-
-## Estrutura do Projeto (Inicial)
-
-```
-/
-├── docs/                  # Documentação detalhada do projeto
-├── public/                # Arquivos estáticos
-├── src/
-│   ├── assets/            # Imagens, fontes, etc.
-│   ├── components/        # Componentes Vue reutilizáveis
-│   ├── views/             # Páginas da aplicação (Login, Album, MediaView)
-│   ├── router/            # Configuração do Vue Router
-│   ├── services/          # Lógica de negócio e comunicação com API
-│   ├── App.vue            # Componente raiz
-│   └── main.js            # Ponto de entrada da aplicação
-├── .gitignore
-├── index.html
-├── package.json
-└── README.md
-```
 
 ## Como Iniciar
 
@@ -67,3 +60,5 @@ A autenticação está atualmente simulada (`mocked`). Para fazer login, utilize
 
 *   **Usuário:** `demo@example.com`
 *   **Senha:** `demo`
+
+O formulário de descrição já está funcional e os dados podem ser salvos (simuladamente) no AtoM.

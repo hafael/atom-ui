@@ -1,6 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Login from '../views/Login.vue';
 import Dashboard from '../views/Dashboard.vue';
+import Browse from '../views/Browse.vue';
+import Describe from '../views/Describe.vue';
+import UserView from '../views/UserView.vue'; // Import UserView
 import { store } from '../store';
 
 const routes = [
@@ -14,6 +17,21 @@ const routes = [
     name: 'Dashboard',
     component: Dashboard,
   },
+  {
+    path: '/browse/:pathMatch(.*)*',
+    name: 'Browse',
+    component: Browse,
+  },
+  {
+    path: '/describe/:pathMatch(.*)*',
+    name: 'Describe',
+    component: Describe,
+  },
+  {
+    path: '/profile', // New route for UserView
+    name: 'Profile',
+    component: UserView,
+  },
 ];
 
 const router = createRouter({
@@ -22,9 +40,16 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.name !== 'Login' && !store.isAuthenticated) {
+  const isAuthenticated = store.isAuthenticated;
+
+  if (to.name === 'Login' && isAuthenticated) {
+    // If user is authenticated and tries to go to Login, redirect to Dashboard
+    next({ name: 'Dashboard' });
+  } else if (to.name !== 'Login' && !isAuthenticated) {
+    // If user is not authenticated and tries to go to a protected route, redirect to Login
     next({ name: 'Login' });
   } else {
+    // Otherwise, allow navigation
     next();
   }
 });
