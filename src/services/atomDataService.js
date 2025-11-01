@@ -2,7 +2,7 @@ import axios from 'axios';
 import { store } from '../store';
 
 const apiClient = axios.create({
-  baseURL: 'http://localhost:63001/api', // Use the Vite proxy
+  baseURL: import.meta.env.VITE_ATOM_API_URL || 'http://localhost:63001/api', // Use the Vite proxy
   headers: {
     'Content-Type': 'application/json',
   },

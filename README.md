@@ -45,6 +45,16 @@ A aplicação está disponível para acesso em:
 
 [https://hafael.github.io/atom-ui/](https://hafael.github.io/atom-ui/)
 
+## Configuração
+
+Antes de iniciar a aplicação, você precisa configurar a URL da API do AtoM. Para isso, crie um arquivo `.env` na raiz do projeto, baseado no arquivo `.env.example`:
+
+```bash
+cp .env.example .env
+```
+
+Em seguida, edite o arquivo `.env` com a URL da sua instância do AtoM.
+
 ## Como Iniciar
 
 1.  **Instale as dependências:**
