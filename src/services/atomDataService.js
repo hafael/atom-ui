@@ -83,7 +83,12 @@ export default {
 
   getMediaDetails(mediaId) {
     // Fetches the full details of a specific information object (media)
-    return apiClient.get(`/informationobjects/${mediaId}`);
+    return apiClient.get(`/informationobjects/${mediaId}`, {
+      headers: {
+        Authorization: 'Basic ' + store.basicAuthToken,
+        'Content-Type': 'application/json',
+      },
+    });
   },
 
   getInformationObjectBySlug(slug) {

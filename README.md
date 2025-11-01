@@ -39,6 +39,12 @@ A documentação do projeto está dividida nos seguintes arquivos:
 *   Tradução automática dos dados inseridos para os metadados correspondentes na API do AtoM.
 *   Design responsivo e focado na experiência do usuário.
 
+## Acesso
+
+A aplicação está disponível para acesso em:
+
+[https://hafael.github.io/atom-ui/](https://hafael.github.io/atom-ui/)
+
 ## Como Iniciar
 
 1.  **Instale as dependências:**
@@ -53,12 +59,3 @@ A documentação do projeto está dividida nos seguintes arquivos:
 
 3.  **Acesse o aplicativo:**
     Abra o seu navegador e acesse a URL fornecida pelo Vite (geralmente `http://localhost:5173`).
-
-**Nota sobre a autenticação:**
-
-A autenticação está atualmente simulada (`mocked`). Para fazer login, utilize as seguintes credenciais:
-
-*   **Usuário:** `demo@example.com`
-*   **Senha:** `demo`
-
-O formulário de descrição já está funcional e os dados podem ser salvos (simuladamente) no AtoM.
